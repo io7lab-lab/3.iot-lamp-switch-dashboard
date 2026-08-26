@@ -1,0 +1,261 @@
+[
+    {
+        "id": "48000eda9069bba3",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "f1904740714f35ce",
+        "type": "io7-hub",
+        "name": "io7 App ID",
+        "host": "mqtt",
+        "useTLS": false,
+        "knownPort": true,
+        "port": "1883",
+        "tls": "",
+        "clientid": ""
+    },
+    {
+        "id": "98ba909a65250459",
+        "type": "ui-base",
+        "name": "My Dashboard",
+        "path": "/dashboard",
+        "appIcon": "",
+        "includeClientData": true,
+        "acceptsClientConfig": [
+            "ui-notification",
+            "ui-control"
+        ],
+        "showPathInSidebar": false,
+        "headerContent": "page",
+        "navigationStyle": "default",
+        "titleBarStyle": "default",
+        "showReconnectNotification": true,
+        "notificationDisplayTime": 1,
+        "showDisconnectNotification": true,
+        "allowInstall": true
+    },
+    {
+        "id": "7197f335b5b36e69",
+        "type": "ui-theme",
+        "name": "Default Theme",
+        "colors": {
+            "surface": "#ffffff",
+            "primary": "#0094CE",
+            "bgPage": "#eeeeee",
+            "groupBg": "#ffffff",
+            "groupOutline": "#cccccc"
+        },
+        "sizes": {
+            "density": "default",
+            "pagePadding": "12px",
+            "groupGap": "12px",
+            "groupBorderRadius": "4px",
+            "widgetGap": "12px"
+        }
+    },
+    {
+        "id": "e36fce995a1b2574",
+        "type": "ui-page",
+        "name": "Page 1",
+        "ui": "98ba909a65250459",
+        "path": "/page1",
+        "icon": "home",
+        "layout": "grid",
+        "theme": "7197f335b5b36e69",
+        "breakpoints": [
+            {
+                "name": "Default",
+                "px": 0,
+                "cols": 3
+            },
+            {
+                "name": "Tablet",
+                "px": 576,
+                "cols": 6
+            },
+            {
+                "name": "Small Desktop",
+                "px": 768,
+                "cols": 9
+            },
+            {
+                "name": "Desktop",
+                "px": 1024,
+                "cols": 12
+            }
+        ],
+        "order": 1,
+        "className": "",
+        "visible": "true",
+        "disabled": "false"
+    },
+    {
+        "id": "2d63decc1efdfb8f",
+        "type": "ui-group",
+        "name": "Group 1",
+        "page": "e36fce995a1b2574",
+        "width": 6,
+        "height": 1,
+        "order": 1,
+        "showTitle": true,
+        "className": "",
+        "visible": true,
+        "disabled": false,
+        "groupType": "default"
+    },
+    {
+        "id": "9f3a3b0503be576b",
+        "type": "io7 out",
+        "z": "48000eda9069bba3",
+        "authentication": "f1904740714f35ce",
+        "name": "",
+        "deviceId": "lamp1",
+        "cmd": "power",
+        "fmt": "json",
+        "qos": "0",
+        "retain": "false",
+        "x": 670,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "65a41d8b7b44c5d6",
+        "type": "io7 in",
+        "z": "48000eda9069bba3",
+        "name": "",
+        "deviceId": "button1",
+        "authentication": "f1904740714f35ce",
+        "evt": "status",
+        "fmt": "json",
+        "qos": "0",
+        "allDevices": false,
+        "allEvents": false,
+        "allFormats": false,
+        "x": 110,
+        "y": 240,
+        "wires": [
+            [
+                "5fe47200c8d80896"
+            ]
+        ]
+    },
+    {
+        "id": "5fe47200c8d80896",
+        "type": "function",
+        "z": "48000eda9069bba3",
+        "name": "Push",
+        "func": "if (msg.payload.d.button !== 'pushed') {\n    return;\n}\n\nmsg.payload = {\n    d : {\n        lamp : \"toggle\"\n    }\n}\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 510,
+        "y": 240,
+        "wires": [
+            [
+                "9f3a3b0503be576b"
+            ]
+        ]
+    },
+    {
+        "id": "9a25773f538e216e",
+        "type": "io7 in",
+        "z": "48000eda9069bba3",
+        "name": "",
+        "deviceId": "lamp1",
+        "authentication": "f1904740714f35ce",
+        "evt": "status",
+        "fmt": "json",
+        "qos": "0",
+        "allDevices": false,
+        "allEvents": false,
+        "allFormats": false,
+        "x": 110,
+        "y": 180,
+        "wires": [
+            [
+                "2f506732baadd4e8"
+            ]
+        ]
+    },
+    {
+        "id": "e832b3b976462799",
+        "type": "ui-switch",
+        "z": "48000eda9069bba3",
+        "name": "",
+        "label": "Switch",
+        "group": "2d63decc1efdfb8f",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "decouple": true,
+        "topic": "topic",
+        "topicType": "msg",
+        "style": "",
+        "className": "",
+        "layout": "row-spread",
+        "clickableArea": "switch",
+        "onvalue": "on",
+        "onvalueType": "str",
+        "onicon": "",
+        "oncolor": "",
+        "offvalue": "off",
+        "offvalueType": "str",
+        "officon": "",
+        "offcolor": "",
+        "x": 390,
+        "y": 180,
+        "wires": [
+            [
+                "af12ed183a5623c3"
+            ]
+        ]
+    },
+    {
+        "id": "2f506732baadd4e8",
+        "type": "function",
+        "z": "48000eda9069bba3",
+        "name": "lamp in",
+        "func": "msg.payload = msg.payload.d.lamp;\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 260,
+        "y": 180,
+        "wires": [
+            [
+                "e832b3b976462799"
+            ]
+        ]
+    },
+    {
+        "id": "af12ed183a5623c3",
+        "type": "function",
+        "z": "48000eda9069bba3",
+        "name": "lamp out",
+        "func": "msg.payload = {\n    d : {\n        lamp : msg.payload\n    }\n}\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 520,
+        "y": 180,
+        "wires": [
+            [
+                "9f3a3b0503be576b"
+            ]
+        ]
+    }
+]

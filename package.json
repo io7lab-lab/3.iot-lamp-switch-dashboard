@@ -1,0 +1,12 @@
+{
+    "name": "Project03",
+    "description": "3. io7 IoTLamp with Switch and Dashboard",
+    "version": "0.0.1",
+    "dependencies": {},
+    "node-red": {
+        "settings": {
+            "flowFile": "flows.json",
+            "credentialsFile": "flows_cred.json"
+        }
+    }
+}
