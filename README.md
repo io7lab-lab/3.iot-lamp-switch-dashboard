@@ -2,6 +2,6 @@
 
 Node-RED flow that adds a Dashboard 2.0 UI to the lamp and switch automation.
 
-See Chapter 3, Section 3.4.3 of the book.
+See Chapter 3, Section 3.4.3 of the book. The same flow is reused with real devices in Section 5.6.4 (MicroPython) and Section 12.4.2 (Arduino/IO7F32).
 
 <img width="1624" height="963" alt="Screenshot 2025-09-24 at 10 57 30 PM" src="https://github.com/user-attachments/assets/8224c7e4-931b-49c8-ae6b-9f5d6c06d595" />
