@@ -1,8 +1,6 @@
 # io7 IoT Lamp with Switch and Dashboard
 
-Adds a Node-RED Dashboard 2.0 UI to the lamp + switch flow. A ui-switch widget sends `on`/`off` commands to `lamp1`, while the lamp's own status events drive the widget's displayed state, so the dashboard always reflects the real device — whichever path changed it.
-
-Import `flows.json`, install `@flowfuse/node-red-dashboard`, keep the switch widget's "pass through" option off (it would otherwise loop), and open `http://<your-host>:1880/dashboard`. Run the dummies with `npx github:io7lab/io7dummy-device lamp` and `... button`.
+Node-RED flow that adds a Dashboard 2.0 UI to the lamp and switch automation.
 
 See Chapter 3, Section 3.4.3 of the book.
 
